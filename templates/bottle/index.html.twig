@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bottle{% endblock %}
+{% block title %}{{ 'bottle.page_title'|trans }}{% endblock %}
+
+{% trans_default_domain 'bottle' %}
 
 {% block body %}
-    <h1>Bottle</h1>
+    <h1>{{ 'bottle.title'|trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Misebout</th>
-                <th>Createat</th>
-                <th>Region</th>
-                <th>Contenance</th>
-                <th>actions</th>
+                <th>{{ 'bottle.id'|trans }}</th>
+                <th>{{ 'bottle.name'|trans }}</th>
+                <th>{{ 'bottle.quantity'|trans }}</th>
+                <th>{{ 'bottle.misebout'|trans }}</th>
+                <th>{{ 'bottle.createat'|trans }}</th>
+                <th>{{ 'bottle.region'|trans }}</th>
+                <th>{{ 'bottle.contenance'|trans }}</th>
             </tr>
         </thead>
         <tbody>

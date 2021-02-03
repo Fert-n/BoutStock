@@ -25,6 +25,8 @@ class BottleType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Bottle::class,
+            'translation_domain' => 'bottle',
+            'label_format' => 'bottle.%name%'
         ]);
     }
 }
