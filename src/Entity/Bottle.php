@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\BottleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BottleRepository::class)
@@ -23,6 +25,7 @@ class Bottle
     private $name;
 
     /**
+     * @Assert\PositiveOrZero()
      * @ORM\Column(type="integer")
      */
     private $quantity;
@@ -50,8 +53,16 @@ class Bottle
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="bottles")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotNull()
      */
     private $type;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     *
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -138,6 +149,25 @@ class Bottle
     public function setType(?Category $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     * @return Bottle
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }

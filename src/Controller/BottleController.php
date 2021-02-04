@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Bottle;
+use App\Entity\Category;
 use App\Form\BottleType;
 use App\Repository\BottleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +27,17 @@ class BottleController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="bottle_new", methods={"GET","POST"})
+     * @Route("/{slug}", name="bottle_list_by_category", methods={"GET"})
+     */
+    public function listByCategory(BottleRepository $bottleRepository, Category $category): Response
+    {
+        return $this->render('bottle/index.html.twig', [
+            'bottles' => $bottleRepository->findAllByCategory($category),
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="bottle_new", methods={"GET","POST"}, priority=1)
      */
     public function new(Request $request): Response
     {
@@ -49,7 +60,7 @@ class BottleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="bottle_show", methods={"GET"})
+     * @Route("/show/{slug}", name="bottle_show", methods={"GET"})
      */
     public function show(Bottle $bottle): Response
     {
@@ -59,7 +70,7 @@ class BottleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="bottle_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="bottle_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Bottle $bottle): Response
     {
@@ -79,7 +90,7 @@ class BottleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="bottle_delete", methods={"DELETE"})
+     * @Route("/{slug}", name="bottle_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Bottle $bottle): Response
     {

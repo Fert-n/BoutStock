@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Bottle;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,23 @@ class BottleRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Bottle::class);
+    }
+
+    public function findAllByCategory(?Category $type = null)
+    {
+        $queryBuilder = $this->createQueryBuilder('b');
+
+        if ($type) {
+            $queryBuilder
+                ->andWhere('b.type = :type')
+                ->setParameter('type', $type)
+            ;
+        }
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**

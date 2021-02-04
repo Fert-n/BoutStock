@@ -7,6 +7,13 @@
 {% block body %}
     <h1>{{ 'bottle.title'|trans }}</h1>
 
+    <div>
+        <a href="{{ path('bottle_list_by_category', { slug: 'vins' }) }}">{{ 'bottle.vins'|trans }}</a>
+        <a href="{{ path('bottle_list_by_category', { slug: 'alcool-fort' }) }}">{{ 'bottle.alcoolFort'|trans }}</a>
+        <a href="{{ path('bottle_list_by_category', { slug: 'sans-alcool' }) }}">{{ 'bottle.sansAlcool'|trans }}</a>
+        <a href="{{ path('bottle_index') }}">{{ 'bottle.allTypes'|trans }}</a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
@@ -27,8 +34,8 @@
                 <td>{{ bottle.misebout ? bottle.misebout|date('Y') : '' }}</td>
                 <td>{{ bottle.region }}</td>
                 <td>
-                    <a href="{{ path('bottle_show', {'id': bottle.id}) }}">{{ 'bottle.show'|trans }}</a>
-                    <a href="{{ path('bottle_edit', {'id': bottle.id}) }}">{{ 'bottle.edit'|trans }}</a>
+                    <a href="{{ path('bottle_show', {'slug': bottle.slug}) }}">{{ 'bottle.show'|trans }}</a>
+                    <a href="{{ path('bottle_edit', {'slug': bottle.slug}) }}">{{ 'bottle.edit'|trans }}</a>
                 </td>
             </tr>
         {% else %}
