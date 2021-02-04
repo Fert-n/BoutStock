@@ -1,46 +1,43 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'show' %}
 
-{% block title %}Bottle{% endblock %}
+{% block title %}{{ 'show.title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Bottle</h1>
+    <h1>{{ 'show.detail'|trans }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ bottle.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
+                <th>{{ 'show.name'|trans }}</th>
                 <td>{{ bottle.name }}</td>
             </tr>
             <tr>
-                <th>Quantity</th>
+                <th>{{ 'show.quantity'|trans }}</th>
                 <td>{{ bottle.quantity }}</td>
             </tr>
             <tr>
-                <th>Misebout</th>
+                <th>{{ 'show.misebout'|trans }}</th>
                 <td>{{ bottle.misebout ? bottle.misebout|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Createat</th>
+                <th>{{ 'show.crateat'|trans }}</th>
                 <td>{{ bottle.createat ? bottle.createat|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Region</th>
+                <th>{{ 'show.region'|trans }}</th>
                 <td>{{ bottle.region }}</td>
             </tr>
             <tr>
-                <th>Contenance</th>
+                <th>{{ 'show.contenance'|trans }}</th>
                 <td>{{ bottle.contenance }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('bottle_index') }}">back to list</a>
+    <a href="{{ path('bottle_index') }}">{{ 'show.backtolist'|trans }}</a>
 
-    <a href="{{ path('bottle_edit', {'id': bottle.id}) }}">edit</a>
+    <a href="{{ path('bottle_edit', {'id': bottle.id}) }}">{{ 'show.edit'|trans }}</a>
 
     {{ include('bottle/_delete_form.html.twig') }}
 {% endblock %}

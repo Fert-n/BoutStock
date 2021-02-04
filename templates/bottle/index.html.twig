@@ -16,6 +16,7 @@
                 <th>{{ 'bottle.createat'|trans }}</th>
                 <th>{{ 'bottle.region'|trans }}</th>
                 <th>{{ 'bottle.contenance'|trans }}</th>
+                <th>{{ 'bottle.action'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -41,4 +42,6 @@
     </table>
 
     <a href="{{ path('bottle_new') }}">{{ 'bottle.createnew'|trans }}</a>
+    <a href="{{ path('index') }}">{{ 'bottle.return'|trans }}</a>
+
 {% endblock %}

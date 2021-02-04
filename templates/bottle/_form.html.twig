@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'new' %}
 
 {% block body %}
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn">{{ 'new.save'|trans}}</button>
 {{ form_end(form) }}
 {% endblock %}

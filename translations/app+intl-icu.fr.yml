@@ -1,1 +1,3 @@
 app.title: 'BoutStock'
+app.add: 'Ajouter une bouteille'
+app.list: 'Inventaire'

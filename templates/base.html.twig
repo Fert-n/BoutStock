@@ -19,12 +19,15 @@
     </head>
     <body>
     <header>
-        <h1>BoutStock</h1>
-        {% block header %}{% endblock %}
+
+        {% block header %}
+            <h1>{{ 'app.title'|trans }}</h1>
+        {% endblock %}
     </header>
     <main>
         {% block body %}
-            <a href="{{ path('bottle_new') }}">Bouteille</a>
+            <a href="{{ path('bottle_new') }}">{{ 'app.add'|trans }}</a>
+            <a href="{{ path('bottle_index') }}">{{ 'app.list'|trans }}</a>
         {% endblock %}
     </main>
     <footer>
