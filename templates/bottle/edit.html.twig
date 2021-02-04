@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'edit' %}
 
-{% block title %}Edit Bottle{% endblock %}
+{% block title %}{{ 'edit.title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Bottle</h1>
+    <h1>{{ 'edit.edit'|trans }}</h1>
 
     {{ include('bottle/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('bottle_index') }}">back to list</a>
+    <a href="{{ path('bottle_index') }}">{{ 'edit.backtolist'|trans }}</a>
 
     {{ include('bottle/_delete_form.html.twig') }}
 {% endblock %}
