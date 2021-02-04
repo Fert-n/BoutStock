@@ -47,6 +47,12 @@ class Bottle
      */
     private $contenance;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=category::class, inversedBy="bottles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +126,18 @@ class Bottle
     public function setContenance(int $contenance): self
     {
         $this->contenance = $contenance;
+
+        return $this;
+    }
+
+    public function getType(): ?category
+    {
+        return $this->type;
+    }
+
+    public function setType(?category $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

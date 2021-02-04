@@ -13,9 +13,7 @@
                 <th>{{ 'bottle.name'|trans }}</th>
                 <th>{{ 'bottle.quantity'|trans }}</th>
                 <th>{{ 'bottle.misebout'|trans }}</th>
-                <th>{{ 'bottle.createat'|trans }}</th>
                 <th>{{ 'bottle.region'|trans }}</th>
-                <th>{{ 'bottle.contenance'|trans }}</th>
                 <th>{{ 'bottle.action'|trans }}</th>
             </tr>
         </thead>
@@ -24,10 +22,8 @@
             <tr>
                 <td>{{ bottle.name }}</td>
                 <td>{{ bottle.quantity }}</td>
-                <td>{{ bottle.misebout ? bottle.misebout|date('Y-m-d') : '' }}</td>
-                <td>{{ bottle.createat ? bottle.createat|date('Y-m-d') : '' }}</td>
+                <td>{{ bottle.misebout ? bottle.misebout|date('Y') : '' }}</td>
                 <td>{{ bottle.region }}</td>
-                <td>{{ bottle.contenance }}</td>
                 <td>
                     <a href="{{ path('bottle_show', {'id': bottle.id}) }}">{{ 'bottle.show'|trans }}</a>
                     <a href="{{ path('bottle_edit', {'id': bottle.id}) }}">{{ 'bottle.edit'|trans }}</a>

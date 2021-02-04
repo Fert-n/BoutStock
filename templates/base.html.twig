@@ -13,16 +13,10 @@
                 crossorigin="anonymous"></script>
 
         <title>{% block title %}{{ 'app.title'|trans }}{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-
-        {% block javascripts %}{% endblock %}
     </head>
     <body>
     <header>
-
-        {% block header %}
             <h1>{{ 'app.title'|trans }}</h1>
-        {% endblock %}
     </header>
     <main>
         {% block body %}
@@ -31,7 +25,7 @@
         {% endblock %}
     </main>
     <footer>
-        {% block footer %}{% endblock %}
+        <p>&nbsp;©BoutStock {{ "now"|date("Y") }}</p>
     </footer>
     </body>
 </html>
