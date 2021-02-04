@@ -48,7 +48,7 @@ class Bottle
     private $contenance;
 
     /**
-     * @ORM\ManyToOne(targetEntity=category::class, inversedBy="bottles")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="bottles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
@@ -99,7 +99,7 @@ class Bottle
         return $this->createat;
     }
 
-    public function setCreateat(\DateTimeInterface $createat): self
+    public function setCreateAt(\DateTimeInterface $createat): self
     {
         $this->createat = $createat;
 
@@ -130,12 +130,12 @@ class Bottle
         return $this;
     }
 
-    public function getType(): ?category
+    public function getType(): ?Category
     {
         return $this->type;
     }
 
-    public function setType(?category $type): self
+    public function setType(?Category $type): self
     {
         $this->type = $type;
 

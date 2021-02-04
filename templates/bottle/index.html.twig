@@ -12,6 +12,7 @@
             <tr>
                 <th>{{ 'bottle.name'|trans }}</th>
                 <th>{{ 'bottle.quantity'|trans }}</th>
+                <th>{{ 'bottle.type'|trans }}</th>
                 <th>{{ 'bottle.misebout'|trans }}</th>
                 <th>{{ 'bottle.region'|trans }}</th>
                 <th>{{ 'bottle.action'|trans }}</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{ bottle.name }}</td>
                 <td>{{ bottle.quantity }}</td>
+                <td>{{ bottle.type.type }}</td>
                 <td>{{ bottle.misebout ? bottle.misebout|date('Y') : '' }}</td>
                 <td>{{ bottle.region }}</td>
                 <td>
