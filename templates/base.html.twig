@@ -20,8 +20,12 @@
     </header>
     <main>
         {% block body %}
-            <a href="{{ path('bottle_new') }}">{{ 'app.add'|trans }}</a>
-            <a href="{{ path('bottle_index') }}">{{ 'app.list'|trans }}</a>
+            {% if app.user is not null %}
+                <a href="{{ path('app_logout') }}">{{ 'app.logout'|trans }}</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">{{ 'app.login'|trans }}</a>
+                <a href="{{ path('app_register') }}">{{ 'app.register'|trans }}</a>
+            {% endif %}
         {% endblock %}
     </main>
     <footer>

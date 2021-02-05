@@ -1,3 +1,6 @@
 app.title: 'BoutStock'
 app.add: 'Ajouter une bouteille'
 app.list: 'Cave'
+app.login: 'Se Connecter'
+app.register: 'Créer un compte'
+app.logout: 'Déconnexion'

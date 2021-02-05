@@ -6,6 +6,7 @@ use App\Entity\Bottle;
 use App\Entity\Category;
 use App\Form\BottleType;
 use App\Repository\BottleRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/bottle")
+ * @IsGranted("ROLE_USER")
  */
 class BottleController extends AbstractController
 {
@@ -60,6 +62,7 @@ class BottleController extends AbstractController
     }
 
     /**
+     *
      * @Route("/show/{slug}", name="bottle_show", methods={"GET"})
      */
     public function show(Bottle $bottle): Response
