@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -21,6 +22,7 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank('Please enter an email')
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -31,12 +33,14 @@ class User implements UserInterface
     private $roles = [];
 
     /**
+     * @Assert\NotBlank('Please enter a password')
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * @Assert\NotBlank('Please enter a valid username.')
      * @ORM\Column(type="string", length=150)
      */
     private $username;
