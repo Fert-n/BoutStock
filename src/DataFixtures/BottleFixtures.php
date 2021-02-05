@@ -3,6 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\Bottle;
+use App\Entity\Category;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -11,30 +13,37 @@ class BottleFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $this->createBottle($manager,   'Jack Daniels',
-                                        8,
-                                        CategoryFixtures::ALCOOL_FORT,
-                                        '2020',
-                                        'bordeau',
-                                        75);
-        $this->createBottle($manager,   'vieille eglise',
-                                        2,
-                                        CategoryFixtures::VINS,
-                                        '2018',
-                                        'bordeau',
-                                        75);
+        $this->createBottle($manager,
+            'Jack Daniels',
+            8,
+            CategoryFixtures::ALCOOL_FORT,
+            '2020',
+            'bordeau',
+            75,
+            UserFixtures::CAVE . '_deschiens');
+
+        $this->createBottle($manager, 'vieille eglise',
+            2,
+            CategoryFixtures::VINS,
+            '2018',
+            'bordeau',
+            75,
+            UserFixtures::CAVE . '_chats');
+
         $this->createBottle($manager, 'oasis',
-                                        3,
-                                        CategoryFixtures::SANS_ALCOOL,
-                                        '2019',
-                                        'france',
-                                        150);
+            3,
+            CategoryFixtures::SANS_ALCOOL,
+            '2019',
+            'france',
+            150,
+            UserFixtures::CAVE . '_humains');
         $manager->flush();
     }
 
     public function getDependencies()
     {
         return array(
+            UserFixtures::class,
             CategoryFixtures::class,
         );
     }
@@ -49,10 +58,13 @@ class BottleFixtures extends Fixture implements DependentFixtureInterface
         string $category,
         string $miseBout,
         string $region,
-        int $contenance
-    ): void {
+        int $contenance,
+        string $cave
+    ): void
+    {
         $bottle = new Bottle();
 
+        $bottle->setCave($this->getReference($cave));
         $bottle->setName($name);
         $bottle->setQuantity($quantity);
         $bottle->setType($this->getReference($category));
