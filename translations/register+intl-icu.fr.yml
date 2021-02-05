@@ -1,0 +1,6 @@
+register.title: 'Crétion du Compte'
+register.register: 'Créer'
+register.email: 'Email'
+register.first: 'Mot de passe'
+register.second: 'Confirmer le mot de passe'
+register.username: 'Pseudo'

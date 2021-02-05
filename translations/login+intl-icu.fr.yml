@@ -1,5 +1,6 @@
 login.logout: 'Déconnexion'
 login.login: 'Connexion'
 login.email: 'Email'
-login.password: 'Mots de Passe'
+login.password: 'Mot de Passe'
 login.button: 'Valider'
+login.title: 'Connexion'
