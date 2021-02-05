@@ -1,0 +1,5 @@
+login.logout: 'Déconnexion'
+login.login: 'Connexion'
+login.email: 'Email'
+login.password: 'Mots de Passe'
+login.button: 'Valider'
