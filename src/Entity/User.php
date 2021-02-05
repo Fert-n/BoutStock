@@ -45,6 +45,11 @@ class User implements UserInterface
      */
     private $username;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Cave::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $cave;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -126,6 +131,23 @@ class User implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getCave(): ?Cave
+    {
+        return $this->cave;
+    }
+
+    public function setCave(Cave $cave): self
+    {
+        // set the owning side of the relation if necessary
+        if ($cave->getUser() !== $this) {
+            $cave->setUser($this);
+        }
+
+        $this->cave = $cave;
 
         return $this;
     }

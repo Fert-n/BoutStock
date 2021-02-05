@@ -64,6 +64,12 @@ class Bottle
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Cave::class, inversedBy="bottles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cave;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -168,6 +174,18 @@ class Bottle
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCave(): ?Cave
+    {
+        return $this->cave;
+    }
+
+    public function setCave(?Cave $cave): self
+    {
+        $this->cave = $cave;
 
         return $this;
     }
