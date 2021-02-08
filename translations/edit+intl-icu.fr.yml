@@ -5,3 +5,4 @@ edit.delete: 'Supprimer'
 bottle:
   delete:
     confirm: 'Etes vous sur de vouloir supprimer tout le sock ?'
+edit.logout: 'Déconnexion'
