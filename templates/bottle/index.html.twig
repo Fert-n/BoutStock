@@ -34,8 +34,8 @@
                 <td>{{ bottle.misebout ? bottle.misebout|date('Y') : '' }}</td>
                 <td>{{ bottle.region }}</td>
                 <td>
-                    <a href="{{ path('bottle_show', {'slug': bottle.slug}) }}">{{ 'bottle.show'|trans }}</a>
-                    <a href="{{ path('bottle_edit', {'slug': bottle.slug}) }}">{{ 'bottle.edit'|trans }}</a>
+                    <a href="{{ path('bottle_show', {'slug': bottle.slug}) }}"><i class="bi bi-search"></i></a>
+                    <a href="{{ path('bottle_edit', {'slug': bottle.slug}) }}"><i class="bi bi-pencil-fill"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -46,30 +46,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('bottle_new') }}">{{ 'bottle.createnew'|trans }}</a>
-    <a href="{{ path('index') }}">{{ 'bottle.return'|trans }}</a>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        {{ 'bottle.logout'|trans }}
-    </button>
+    <a class="btn btn-success" href="{{ path('bottle_new') }}">{{ 'bottle.createnew'|trans }}</a>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ 'bottle.logout'|trans }}</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{ 'bottle.modal'|trans }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'bottle.no'|trans }}</button>
-                    <a href="{{ path('app_logout') }}" class="btn btn-primary">{{ 'bottle.yes'|trans }}</a>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}

@@ -1,0 +1,41 @@
+{% trans_default_domain 'app' %}
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://dummyimage.com/30x24/fff/000000.png&text=logo" alt="" width="30" height="24">
+        </a>
+        <div class="d-flex">
+            {% if app.user is not null %}
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    {{ 'app.logout'|trans }}
+                </button>
+            {% else %}
+                <a class="btn btn-primary" href="{{ path('app_login') }}">{{ 'app.login'|trans }}</a>
+                <a class="btn btn-primary" href="{{ path('app_register') }}">{{ 'app.register'|trans }}</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ 'app.logout'|trans }}</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ 'app.modal'|trans }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'app.no'|trans }}</button>
+                <a href="{{ path('app_logout') }}" class="btn btn-primary">{{ 'app.yes'|trans }}</a>
+            </div>
+        </div>
+    </div>
+</div>

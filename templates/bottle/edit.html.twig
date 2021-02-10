@@ -8,32 +8,7 @@
 
     {{ include('bottle/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('bottle_index') }}">{{ 'edit.backtolist'|trans }}</a>
-
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        {{ 'edit.logout'|trans }}
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ 'edit.logout'|trans }}</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{ 'edit.modal'|trans }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'edit.no'|trans }}</button>
-                    <a href="{{ path('app_logout') }}" class="btn btn-primary">{{ 'edit.yes'|trans }}</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <a class="btn btn-primary" href="{{ path('bottle_index') }}">{{ 'edit.backtolist'|trans }}</a>
 
     {{ include('bottle/_delete_form.html.twig') }}
 {% endblock %}

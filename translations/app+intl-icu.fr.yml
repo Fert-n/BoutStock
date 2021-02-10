@@ -4,3 +4,7 @@ app.list: 'Cave'
 app.login: 'Se Connecter'
 app.register: 'Créer un compte'
 app.logout: 'Déconnexion'
+app:
+  modal: 'Voulez vous vraiment vous déconnecter ?'
+  no: 'Non'
+  yes: 'Oui'
