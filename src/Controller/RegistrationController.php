@@ -32,7 +32,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            // création d'une cave pour l'utilisateur
             $cave = new Cave();
             $cave->setUser($user);
             $user->setCave($cave);

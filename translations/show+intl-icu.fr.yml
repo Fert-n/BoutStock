@@ -10,3 +10,7 @@ show.edit: 'Modifier'
 show.detail: 'Détails'
 show.type: 'type'
 show.logout: 'Déconnexion'
+show:
+  modal: 'Voulez vous être déconnecté ?'
+  no: 'Non'
+  yes: 'Oui'

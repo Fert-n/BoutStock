@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Bottle;
 use App\Entity\Category;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,7 +21,7 @@ class BottleRepository extends ServiceEntityRepository
         parent::__construct($registry, Bottle::class);
     }
 
-    public function findAllByCategory(?Category $type = null)
+    public function findAllByCategory(?Category $type = null, ?User $user = null)
     {
         $queryBuilder = $this->createQueryBuilder('b');
 
@@ -28,6 +29,14 @@ class BottleRepository extends ServiceEntityRepository
             $queryBuilder
                 ->andWhere('b.type = :type')
                 ->setParameter('type', $type)
+            ;
+        }
+
+        if ($user) {
+            $queryBuilder
+                ->join('b.cave', 'c')
+                ->andWhere('c.id = :id')
+                ->setParameter('id', $user->getCave()->getId())
             ;
         }
 

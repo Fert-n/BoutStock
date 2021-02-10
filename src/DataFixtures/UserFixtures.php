@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 
+use App\Entity\Bottle;
 use App\Entity\Cave;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -14,6 +15,7 @@ class UserFixtures extends Fixture
 {
     private $encoder;
     public const CAVE = 'cave';
+    public const USER = 'user';
 
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
@@ -47,12 +49,14 @@ class UserFixtures extends Fixture
     ): void {
         $user = new User();
         $cave = new Cave();
-        $user->setCave($cave);
+        $bottles = new Bottle();
 
+        $user->setCave($cave);
+        $user->setCave($bottles);
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPassword($this->encoder->encodePassword($user, $password));
-
+        $this->addReference(self::USER.'_'.$username,$bottles);
         $this->addReference(self::CAVE.'_'.$username, $cave);
 
         $manager->persist($user);

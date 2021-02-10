@@ -4,5 +4,9 @@ edit.backtolist: 'Retour à la liste'
 edit.delete: 'Supprimer'
 bottle:
   delete:
-    confirm: 'Etes vous sur de vouloir supprimer tout le sock ?'
+    confirm: 'Etes vous sur de vouloir supprimer tout le stock ?'
 edit.logout: 'Déconnexion'
+edit:
+  modal: 'Voulez vous être déconnecté ?'
+  yes: 'Oui'
+  no: 'Non'

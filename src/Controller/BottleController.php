@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Bottle;
 use App\Entity\Category;
+use App\Entity\Cave;
+use App\Entity\User;
 use App\Form\BottleType;
 use App\Repository\BottleRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,8 +26,10 @@ class BottleController extends AbstractController
      */
     public function index(BottleRepository $bottleRepository): Response
     {
+        $user = $this->getUser();
+
         return $this->render('bottle/index.html.twig', [
-            'bottles' => $bottleRepository->findAll(),
+            'bottles' => $bottleRepository->findByCave($user->getCave()),
         ]);
     }
 
@@ -34,21 +39,24 @@ class BottleController extends AbstractController
     public function listByCategory(BottleRepository $bottleRepository, Category $category): Response
     {
         return $this->render('bottle/index.html.twig', [
-            'bottles' => $bottleRepository->findAllByCategory($category),
+            'bottles' => $bottleRepository->findAllByCategory($category, $this->getUser()),
         ]);
     }
 
     /**
      * @Route("/new", name="bottle_new", methods={"GET","POST"}, priority=1)
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $bottle = new Bottle();
         $form = $this->createForm(BottleType::class, $bottle);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            /** @var User $user */
+            $user = $this->getUser();
+            $bottle->setCave($user->getCave());
+
             $entityManager->persist($bottle);
             $entityManager->flush();
 
