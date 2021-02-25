@@ -14,7 +14,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserFixtures extends Fixture
 {
     private $encoder;
-    public const CAVE = 'cave';
     public const USER = 'user';
 
     public function __construct(UserPasswordEncoderInterface $encoder)
@@ -33,6 +32,8 @@ class UserFixtures extends Fixture
         $this->createUser($manager, 'deschiens', 'deschiens@deschiens.fr', 'deschiens');
         $this->createUser($manager, 'chats', 'chats@chats.fr', 'chatons');
         $this->createUser($manager, 'humains', 'humains@humains.com', 'humains');
+        $this->createUser($manager, 'nath', 'nathanaelle.fert2020@campus-eni.fr', 'password');
+
 
         $manager->flush();
     }
@@ -48,16 +49,11 @@ class UserFixtures extends Fixture
 
     ): void {
         $user = new User();
-        $cave = new Cave();
-        $bottles = new Bottle();
 
-        $user->setCave($cave);
-        $user->setCave($bottles);
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPassword($this->encoder->encodePassword($user, $password));
-        $this->addReference(self::USER.'_'.$username,$bottles);
-        $this->addReference(self::CAVE.'_'.$username, $cave);
+        $this->addReference(self::USER.'_'.$username, $user);
 
         $manager->persist($user);
     }

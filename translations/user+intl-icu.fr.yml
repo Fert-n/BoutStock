@@ -1,0 +1,9 @@
+user.user: 'Profil'
+user:
+  email: 'Email'
+  password: 'Mot de passe'
+  edit: 'Modifier'
+  back: 'Retour'
+  form: 'Formulaire'
+  validate: 'Valider'
+  username: 'Pseudo'

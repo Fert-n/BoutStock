@@ -50,12 +50,13 @@ class User implements UserInterface
      */
     private $cave;
 
-   /* public function __construct()
+    public function __construct()
     {
         $cave = new Cave();
         $cave->setUser($this);
-        $this->cave = new Cave();
-    }*/
+
+        $this->cave = $cave;
+    }
 
     public function getId(): ?int
     {

@@ -1,0 +1,19 @@
+
+{% trans_default_domain 'user' %}
+
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.plainPassword, {
+        label: 'Password'
+    }) }}
+
+    <button type="submit" class="btn btn-outline-primary">{{ 'user.validate'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}
+

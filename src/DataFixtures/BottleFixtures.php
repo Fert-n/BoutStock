@@ -20,8 +20,8 @@ class BottleFixtures extends Fixture implements DependentFixtureInterface
             '2020',
             'bordeau',
             75,
-            UserFixtures::CAVE . '_deschiens',
-            'deschiens');
+            UserFixtures::USER.'_deschiens'
+        );
 
         $this->createBottle($manager, 'vieille eglise',
             2,
@@ -29,8 +29,8 @@ class BottleFixtures extends Fixture implements DependentFixtureInterface
             '2018',
             'bordeau',
             75,
-            UserFixtures::CAVE . '_chats',
-            'chats');
+            UserFixtures::USER.'_chats'
+        );
 
         $this->createBottle($manager, 'oasis',
             3,
@@ -38,8 +38,16 @@ class BottleFixtures extends Fixture implements DependentFixtureInterface
             '2019',
             'france',
             150,
-            UserFixtures::CAVE . '_humains',
-            'humains');
+            UserFixtures::USER.'_humains');
+
+        $this->createBottle($manager, 'oasis',
+            3,
+            CategoryFixtures::SANS_ALCOOL,
+            '2019',
+            'france',
+            150,
+            UserFixtures::USER.'_nath');
+
         $manager->flush();
     }
 
@@ -62,14 +70,12 @@ class BottleFixtures extends Fixture implements DependentFixtureInterface
         string $miseBout,
         string $region,
         int $contenance,
-        string $cave,
         string $user
     ): void
     {
         $bottle = new Bottle();
 
-        $bottle->setCave($this->getReference($user));
-        $bottle->setCave($this->getReference($cave));
+        $bottle->setCave($this->getReference($user)->getCave());
         $bottle->setName($name);
         $bottle->setQuantity($quantity);
         $bottle->setType($this->getReference($category));

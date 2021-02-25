@@ -9,3 +9,4 @@ app:
   no: 'Non'
   yes: 'Oui'
   backtolist: 'Acceuil'
+  user: 'Profil'
