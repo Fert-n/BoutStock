@@ -5,14 +5,18 @@
         <a class="navbar-brand" href="#">
             <img src="https://dummyimage.com/30x24/fff/000000.png&text=logo" alt="" width="30" height="24">
         </a>
+        <h1>{{ 'app.title'|trans }}</h1>
         <div class="d-flex">
             {% if app.user is not null %}
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    {{ 'app.logout'|trans }}
+                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="bi bi-box-arrow-right"></i>
                 </button>
+                    {% if app.request.attributes.get('_route') is not same as 'bottle_index' %}
+                        <a class="btn btn-outline-primary" href="{{ path('bottle_index') }}">{{ 'app.backtolist'|trans }}</a>
+                    {% endif %}
             {% else %}
-                <a class="btn btn-primary" href="{{ path('app_login') }}">{{ 'app.login'|trans }}</a>
-                <a class="btn btn-primary" href="{{ path('app_register') }}">{{ 'app.register'|trans }}</a>
+                <a class="btn btn-primary" href="{{ path('app_login') }}"><i class="bi bi-person-check-fill"></i></a>
+                <a class="btn btn-success" href="{{ path('app_register') }}"><i class="bi bi-person-plus-fill"></i></a>
             {% endif %}
         </div>
     </div>

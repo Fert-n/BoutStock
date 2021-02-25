@@ -8,3 +8,4 @@ app:
   modal: 'Voulez vous vraiment vous déconnecter ?'
   no: 'Non'
   yes: 'Oui'
+  backtolist: 'Acceuil'
